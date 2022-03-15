@@ -22,9 +22,15 @@ def clrscr():
 #defining disponible options
 ol = ["1","2","3","4","5","6","7","8","9"]
 
+#list containing all possible winning possibilities
+winninglist = [(1,2,3), (4,5,6), (7,8,9), (1,4,7), (2,5,8), (3,6,9), (1,5,9), (7,5,3)]
+
 #choices of every player
 p1choices = list()
 p2choices = list()
+
+#winner found
+winner = False
 
 clrscr()
 
@@ -37,6 +43,17 @@ def printwelcome():
     print("{0:<10}{1:^60}{2:>10}".format("*","And then it's the next player turn","*"))
     print("{0:<10}{1:^60}{2:>10}".format("*","Good Luck !","*"))
     print("*"*80)
+
+def printend():
+    print("*"*80)
+    print("{0:<10}{1:^60}{2:>10}".format("*","THE GAME HAS ENDED", "*"))
+    if winner == False:
+        print("{0:<10}{1:^60}{2:>10}".format("*","Unfortunately, noone has won","*"))
+    else:
+        print(("{0:<10}{1:^60}{2:>10}".format("*","THE WINNER IS: "+winner,"*")))
+    print("*"*80)
+    print("\n"*5)
+
 
 def printmatrix(): #Display matrix creation
     mt =[
@@ -67,14 +84,20 @@ def printmatrix(): #Display matrix creation
         output =""
 
 def printoptions():
-    od = [1,2,3,4,5,6,7,8,9]
-    print(" {} | {} | {} ".format(od[0],od[1],od[2]))
+    print(" {} | {} | {} ".format(ol[0],ol[1],ol[2]))
     print("---|---|---")
-    print(" {} | {} | {} ".format(od[3],od[4],od[5]))
+    print(" {} | {} | {} ".format(ol[3],ol[4],ol[5]))
     print("---|---|---")
-    print(" {} | {} | {} ".format(od[6],od[7],od[8]))
+    print(" {} | {} | {} ".format(ol[6],ol[7],ol[8]))
     print("")
 
+#Checks if there's a winner. Takes as input the choices and number of the player. 
+#Sets the global variable winner to the number of the winning player
+def checkwinner(choices,pnumber):
+    global winner
+    result = all(elem in winninglist for elem in choices)
+    if result:
+        winner = "Player "+pnumber
 
 ###
 ###Program Start
@@ -87,15 +110,42 @@ printwelcome()
 
 #Default selection to enter in the loop
 pinput = ""
-while pinput.isdigit() == False:
+
+while choicenumber < 9 and winner == False:
     printoptions()
+
+    #Printing player number
+    if choicenumber%2==0:
+        print("Player 1")
+    else: 
+        print("Player 2")
+
+    #take user input
     pinput = input("Choose a number: ")
-    if pinput.isdigit() == False: 
+
+    #First control if it's a number
+    if pinput.isdigit() == True: 
+        #Check if the number is in the list of available numbers
+        if pinput not in ol:
+            print("Sorry, but that choice it's not possible. Please try again.")
+            time.sleep(2)
+            clrscr()
+        else:
+            #remove from the options disponible list the number chosen
+            x = int(pinput) - 1
+            ol[x] = " "
+            #increase the number of choices made
+            choicenumber +=1
+            if choicenumber%2==0:
+                p1choices.append(pinput)
+                checkwinner(p1choices, 1)
+            else:
+                p2choices.append(pinput)
+                checkwinner(p2choices, 2)
+    else:
         print("Must be a number. Please try again")
-    if pinput not in ol:
-        print("Sorry, but that choice it's not possible. Please try again.")
         time.sleep(2)
         clrscr()
-    else:
-        ol[int(pinput)+1] = " "
-        continue
+
+printend()
+time.sleep(5)
