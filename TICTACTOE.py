@@ -43,7 +43,6 @@ def printwelcome():
     print("{0:<10}{1:^60}{2:>10}".format("*","And then it's the next player turn","*"))
     print("{0:<10}{1:^60}{2:>10}".format("*","Good Luck !","*"))
     print("*"*80)
-    print("\n"*1)
 
 def printend():
     print("\n")
@@ -54,7 +53,6 @@ def printend():
     else:
         print(("{0:<10}{1:^60}{2:>10}".format("**","THE WINNER IS: "+winner,"**")))
     print("*"*80)
-    print("\n"*3)
 
 
 def printmatrix(): #Display matrix creation
@@ -117,7 +115,6 @@ printwelcome()
 pinput = ""
 
 while choicenumber < 9 and winner == False:
-    printoptions()
 
     #Printing player number
     if choicenumber%2==0:
@@ -127,6 +124,7 @@ while choicenumber < 9 and winner == False:
 
     #take user input
     pinput = input("Choose a number: ")
+    printoptions()
 
     #First control if it's a number
     if pinput.isdigit() == True: 
@@ -139,13 +137,13 @@ while choicenumber < 9 and winner == False:
             #remove from the options disponible list the number chosen
             x = int(pinput) - 1
             ol[x] = " "
-            #increase the number of choices made
             if choicenumber%2==0:
                 p1choices.append(int(pinput))
                 checkwinner(p1choices, 1)
             else:
                 p2choices.append(int(pinput))
                 checkwinner(p2choices, 2)
+            #increase the number of choices made
             choicenumber +=1
     else:
         print("Must be a number. Please try again")
