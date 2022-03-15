@@ -6,9 +6,8 @@
 # * The board should be printed out every time a player makes a move
 # * You should be able to accept input of the player position and then place a symbol on the board
 
-# TODO  reprint the board everytime someone makes a move
-#       make the board an array so it will be easier to reprint
-#       O and X
+# TODO  Print the selection matrix
+#       Draw the symbols in the matrix
 
 import os
 import time
@@ -84,11 +83,11 @@ def printmatrix(): #Display matrix creation
         output =""
 
 def printoptions():
-    print(" {} | {} | {} ".format(ol[0],ol[1],ol[2]))
-    print("---|---|---")
-    print(" {} | {} | {} ".format(ol[3],ol[4],ol[5]))
-    print("---|---|---")
-    print(" {} | {} | {} ".format(ol[6],ol[7],ol[8]))
+    print(" {:>70} | {} | {} ".format(ol[0],ol[1],ol[2]))
+    # print("---|---|---")
+    print(" {:>70} | {} | {} ".format(ol[3],ol[4],ol[5]))
+    # print("---|---|---")
+    print(" {:>70} | {} | {} ".format(ol[6],ol[7],ol[8]))
     print("")
 
 #Checks if there's a winner. Takes as input the choices and number of the player. 
@@ -100,6 +99,10 @@ def checkwinner(choices,pnumber):
         result = all(elem in choices for elem in element)
         if result:
             winner = "Player "+ str(pnumber)
+
+# def optionselect(pinput, player):
+    #TODO this function
+
 
 
 ###
@@ -116,6 +119,7 @@ pinput = ""
 
 while choicenumber < 9 and winner == False:
 
+    printoptions()
     #Printing player number
     if choicenumber%2==0:
         print("Player 1")
@@ -124,7 +128,6 @@ while choicenumber < 9 and winner == False:
 
     #take user input
     pinput = input("Choose a number: ")
-    printoptions()
 
     #First control if it's a number
     if pinput.isdigit() == True: 
@@ -134,12 +137,14 @@ while choicenumber < 9 and winner == False:
             time.sleep(2)
             clrscr()
         else:
-            #remove from the options disponible list the number chosen
+            #remove from the options disponibles list the number chosen
             x = int(pinput) - 1
             ol[x] = " "
             if choicenumber%2==0:
                 p1choices.append(int(pinput))
                 checkwinner(p1choices, 1)
+                optionselect(pinput, 1)
+                ### TODO fuction that passes the player number and position to change the game matrix
             else:
                 p2choices.append(int(pinput))
                 checkwinner(p2choices, 2)
