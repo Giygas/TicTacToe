@@ -43,16 +43,18 @@ def printwelcome():
     print("{0:<10}{1:^60}{2:>10}".format("*","And then it's the next player turn","*"))
     print("{0:<10}{1:^60}{2:>10}".format("*","Good Luck !","*"))
     print("*"*80)
+    print("\n"*1)
 
 def printend():
+    print("\n")
     print("*"*80)
-    print("{0:<10}{1:^60}{2:>10}".format("*","THE GAME HAS ENDED", "*"))
+    print("{0:<10}{1:^60}{2:>10}".format("**","THE GAME HAS ENDED", "**"))
     if winner == False:
-        print("{0:<10}{1:^60}{2:>10}".format("*","Unfortunately, noone has won","*"))
+        print("{0:<10}{1:^60}{2:>10}".format("**","Unfortunately, noone has won","**"))
     else:
-        print(("{0:<10}{1:^60}{2:>10}".format("*","THE WINNER IS: "+winner,"*")))
+        print(("{0:<10}{1:^60}{2:>10}".format("**","THE WINNER IS: "+winner,"**")))
     print("*"*80)
-    print("\n"*5)
+    print("\n"*3)
 
 
 def printmatrix(): #Display matrix creation
@@ -95,9 +97,12 @@ def printoptions():
 #Sets the global variable winner to the number of the winning player
 def checkwinner(choices,pnumber):
     global winner
-    result = all(elem in winninglist for elem in choices)
-    if result:
-        winner = "Player "+pnumber
+
+    for element in winninglist:
+        result = all(elem in choices for elem in element)
+        if result:
+            winner = "Player "+ str(pnumber)
+
 
 ###
 ###Program Start
@@ -135,13 +140,13 @@ while choicenumber < 9 and winner == False:
             x = int(pinput) - 1
             ol[x] = " "
             #increase the number of choices made
-            choicenumber +=1
             if choicenumber%2==0:
-                p1choices.append(pinput)
+                p1choices.append(int(pinput))
                 checkwinner(p1choices, 1)
             else:
-                p2choices.append(pinput)
+                p2choices.append(int(pinput))
                 checkwinner(p2choices, 2)
+            choicenumber +=1
     else:
         print("Must be a number. Please try again")
         time.sleep(2)
