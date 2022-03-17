@@ -118,19 +118,22 @@ def optionselect(pinput, player):
     i = drawerpointer[pinput-1]
     x = i[1]
     y = i[0]
-
+    if player==1: 
+        letter = "o"
+    else:
+        letter = "x"
     for num in csquare:
-        mt[y+1][x+num] = mt[y+3][x+num] = "x"
+        mt[y+1][x+num] = mt[y+3][x+num] = letter
     if player == 1:
         for num in middle:
-            mt[y][x+num] = mt[y+4][x+num] = "x"
+            mt[y][x+num] = mt[y+4][x+num] = letter
             for num in sides: 
-                mt[y+2][x+num] = "x"
+                mt[y+2][x+num] = letter
     else:
         for num in middle:
-            mt[y+2][x+num] ="x"
+            mt[y+2][x+num] =letter
         for num in sides:
-            mt[y][x+num] = mt[y+4][x+num] = "x"
+            mt[y][x+num] = mt[y+4][x+num] = letter
     
 
 
