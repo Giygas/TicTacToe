@@ -1,7 +1,4 @@
-# Your assignment: Create a Tic Tac Toe game. You are free to use any IDE you like.
-
-# Here are the requirements:
-
+# Project requirements:
 # * 2 players should be able to play the game (both sitting at the same computer)
 # * The board should be printed out every time a player makes a move
 # * You should be able to accept input of the player position and then place a symbol on the board
@@ -52,6 +49,7 @@ winner = False
 clrscr()
 
 def printwelcome():
+    """ Prints the welcoming message """
     print("*"*80)
     print("{0:<10}{1:^60}{2:>10}".format("*","Welcome to TIC TAC TOE", "*"))
     print("*"*80)
@@ -62,6 +60,7 @@ def printwelcome():
     print("*"*80)
 
 def printend():
+    """ Prints the ending message with the tie or winning player """
     print("\n")
     print("*"*80)
     print("{0:<10}{1:^60}{2:>10}".format("**","THE GAME HAS ENDED", "**"))
@@ -73,7 +72,8 @@ def printend():
     print("*"*80)
 
 
-def printmatrix(): #Display matrix creation
+def printmatrix():
+    """ Displays the graphical matrix """
     #output formatting in string
     output = ""
     for row in mt:
@@ -83,6 +83,7 @@ def printmatrix(): #Display matrix creation
         output =""
 
 def printoptions():
+    """ Prints the possible choices remaining """
     print(" {:>70} | {} | {} ".format(ol[0],ol[1],ol[2]))
     # print("---|---|---")
     print(" {:>70} | {} | {} ".format(ol[3],ol[4],ol[5]))
@@ -90,9 +91,11 @@ def printoptions():
     print(" {:>70} | {} | {} ".format(ol[6],ol[7],ol[8]))
     print("")
 
-#Checks if there's a winner. Takes as input the choices and number of the player.
-#Sets the global variable winner to the number of the winning player
 def checkwinner(choices,pnumber):
+    """
+    Checks if there's a winner. Takes as input the choices and number of the player.
+    Sets the global variable winner to the number of the winning player
+    """
     global winner
     for element in winninglist:
         result = all(elem in choices for elem in element)
@@ -104,8 +107,10 @@ drawerpointer=((0,0), (0,11), (0,22),
         (6,0), (6,11), (6,22),
         (12,0), (12,11), (12,22))
 
-#Takes the user input and player number to modify the game matrix with the O or X
 def optionselect(pinput, player):
+    """ 
+        Takes the user input and player number to modify the game matrix with the O or X 
+    """
     global mt
     csquare = (2,3,6,7)
     middle = (4,5)
