@@ -6,9 +6,6 @@
 # * The board should be printed out every time a player makes a move
 # * You should be able to accept input of the player position and then place a symbol on the board
 
-# TODO  Print the selection matrix
-#       Draw the symbols in the matrix
-
 import os
 import time
 
@@ -46,8 +43,8 @@ ol = [1,2,3,4,5,6,7,8,9]
 winninglist = [(1,2,3), (4,5,6), (7,8,9), (1,4,7), (2,5,8), (3,6,9), (1,5,9), (7,5,3)]
 
 #choices of every player
-p1choices = list()
-p2choices = list()
+p1choices = []
+p2choices = []
 
 #winner found
 winner = False
@@ -68,7 +65,7 @@ def printend():
     print("\n")
     print("*"*80)
     print("{0:<10}{1:^60}{2:>10}".format("**","THE GAME HAS ENDED", "**"))
-    if winner == False:
+    if winner is False:
         print("{0:<10}{1:^60}{2:>10}".format("**","Unfortunately, noone has won","**"))
     else:
         print(("{0:<10}{1:^60}{2:>10}".format("**","THE WINNER IS: "+winner,"**")))
@@ -79,7 +76,7 @@ def printend():
 def printmatrix(): #Display matrix creation
     #output formatting in string
     output = ""
-    for i,row in enumerate(mt):
+    for row in mt:
         for character in row:
             output += character
         print("{0:^80}".format(output))
@@ -93,16 +90,14 @@ def printoptions():
     print(" {:>70} | {} | {} ".format(ol[6],ol[7],ol[8]))
     print("")
 
-#Checks if there's a winner. Takes as input the choices and number of the player. 
+#Checks if there's a winner. Takes as input the choices and number of the player.
 #Sets the global variable winner to the number of the winning player
 def checkwinner(choices,pnumber):
     global winner
-
     for element in winninglist:
         result = all(elem in choices for elem in element)
         if result:
             winner = "Player "+ str(pnumber)
-
 
 #Base x and y for all the possible options
 drawerpointer=((0,0), (0,11), (0,22),
@@ -118,7 +113,7 @@ def optionselect(pinput, player):
     i = drawerpointer[pinput-1]
     x = i[1]
     y = i[0]
-    if player==1: 
+    if player==1:
         letter = "o"
     else:
         letter = "x"
@@ -127,15 +122,13 @@ def optionselect(pinput, player):
     if player == 1:
         for num in middle:
             mt[y][x+num] = mt[y+4][x+num] = letter
-            for num in sides: 
+            for num in sides:
                 mt[y+2][x+num] = letter
     else:
         for num in middle:
             mt[y+2][x+num] =letter
         for num in sides:
             mt[y][x+num] = mt[y+4][x+num] = letter
-    
-
 
 
 
@@ -143,26 +136,26 @@ def optionselect(pinput, player):
 ###Program Start
 ###
 
-choicenumber = 0 # tracks the amount of choices made 
+choicenumber = 0 # tracks the amount of choices made
 
-#Welcome 
+#Welcome
 printwelcome()
 
 #Default selection to enter in the loop
 pinput = ""
 
-while choicenumber < 9 and winner == False:
+while choicenumber < 9 and winner is False:
     #Printing player number
     if choicenumber%2==0:
         print("Player 1")
-    else: 
+    else:
         print("Player 2")
     printoptions()
     #take user input
     pinput = input("Choose a number: ")
     #First control if it's a number
-    if pinput.isdigit() == True:
-        pinput = int(pinput) 
+    if pinput.isdigit() is True:
+        pinput = int(pinput)
         #Check if the number is in the list of available numbers
         if pinput not in ol:
             print("Sorry, but that choice it's not possible. Please try again.")
