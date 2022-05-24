@@ -6,47 +6,49 @@
 import os
 import time
 
+
 def clrscr():
     if os.name == 'posix':
         _ = os.system('clear')
     else:
         _ = os.system('cls')
 
-#Display matrix
+# Display matrix
 mt =[
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
-        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "|", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
+        [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ],
         ]
 
-#defining disponible options
-ol = [1,2,3,4,5,6,7,8,9]
+# defining disponible options
+ol = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-#list containing all possible winning possibilities
-winninglist = [(1,2,3), (4,5,6), (7,8,9), (1,4,7), (2,5,8), (3,6,9), (1,5,9), (7,5,3)]
+# list containing all possible winning possibilities
+winninglist = [(1, 2, 3), (4, 5, 6), (7, 8, 9), (1, 4, 7), (2, 5, 8), (3, 6, 9), (1, 5, 9), (7, 5, 3)]
 
-#choices of every player
+# choices of every player
 p1choices = []
 p2choices = []
 
-#winner found
+# winner found
 winner = False
 
 clrscr()
+
 
 def printwelcome():
     """ Prints the welcoming message """
@@ -59,6 +61,7 @@ def printwelcome():
     print("{0:<10}{1:^60}{2:>10}".format("*","Good Luck !","*"))
     print("*"*80)
 
+    
 def printend():
     """ Prints the ending message with the tie or winning player """
     print("\n")
@@ -80,18 +83,20 @@ def printmatrix():
         for character in row:
             output += character
         print("{0:^80}".format(output))
-        output =""
+        output = ""
 
+        
 def printoptions():
     """ Prints the possible choices remaining """
-    print(" {:>70} | {} | {} ".format(ol[0],ol[1],ol[2]))
+    print(" {:>70} | {} | {} ".format(ol[0], ol[1], ol[2]))
     # print("---|---|---")
-    print(" {:>70} | {} | {} ".format(ol[3],ol[4],ol[5]))
+    print(" {:>70} | {} | {} ".format(ol[3], ol[4], ol[5]))
     # print("---|---|---")
-    print(" {:>70} | {} | {} ".format(ol[6],ol[7],ol[8]))
+    print(" {:>70} | {} | {} ".format(ol[6], ol[7], ol[8]))
     print("")
 
-def checkwinner(choices,pnumber):
+    
+def checkwinner(choices, pnumber):
     """
     Checks if there's a winner. Takes as input the choices and number of the player.
     Sets the global variable winner to the number of the winning player
@@ -102,23 +107,23 @@ def checkwinner(choices,pnumber):
         if result:
             winner = "Player "+ str(pnumber)
 
-#Base x and y for all the possible options
-drawerpointer=((0,0), (0,11), (0,22),
-        (6,0), (6,11), (6,22),
-        (12,0), (12,11), (12,22))
+# Base x and y for all the possible options
+drawerpointer = ((0, 0), (0, 11), (0, 22),
+        (6, 0), (6, 11), (6, 22),
+        (12, 0), (12, 11), (12, 22))
 
 def optionselect(pinput, player):
     """ 
         Takes the user input and player number to modify the game matrix with the O or X 
     """
     global mt
-    csquare = (2,3,6,7)
-    middle = (4,5)
-    sides = (0,1,8,9)
+    csquare = (2, 3, 6, 7)
+    middle = (4, 5)
+    sides = (0, 1, 8, 9)
     i = drawerpointer[pinput-1]
     x = i[1]
     y = i[0]
-    if player==1:
+    if player == 1:
         letter = "o"
     else:
         letter = "x"
@@ -138,27 +143,27 @@ def optionselect(pinput, player):
 
 
 ###
-###Program Start
+### Program Start
 ###
 
 choicenumber = 0 # tracks the amount of choices made
 
-#Welcome
+# Welcome
 printwelcome()
 
-#Default selection to enter in the loop
+# Default selection to enter in the loop
 pinput = ""
 
 while choicenumber < 9 and winner is False:
     #Printing player number
-    if choicenumber%2==0:
+    if choicenumber % 2 == 0:
         print("Player 1")
     else:
         print("Player 2")
     printoptions()
-    #take user input
+    # take user input
     pinput = input("Choose a number: ")
-    #First control if it's a number
+    # First control if it's a number
     if pinput.isdigit() is True:
         pinput = int(pinput)
         #Check if the number is in the list of available numbers
@@ -168,10 +173,10 @@ while choicenumber < 9 and winner is False:
             time.sleep(2)
             clrscr()
         else:
-            #remove from the options disponibles list the number chosen
+            # remove from the options disponibles list the number chosen
             x = pinput - 1
             ol[x] = " "
-            if choicenumber%2==0:
+            if choicenumber % 2 == 0:
                 p1choices.append(pinput)
                 checkwinner(p1choices, 1)
                 optionselect(pinput, 1)
@@ -179,8 +184,8 @@ while choicenumber < 9 and winner is False:
                 p2choices.append(pinput)
                 checkwinner(p2choices, 2)
                 optionselect(pinput, 2)
-            #increase the number of choices made
-            choicenumber +=1
+            # increase the number of choices made
+            choicenumber += 1
             clrscr()
     else:
         print("Must be a number. Please try again")
